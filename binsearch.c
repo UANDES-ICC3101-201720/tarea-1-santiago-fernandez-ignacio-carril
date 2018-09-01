@@ -12,15 +12,53 @@
 #include "util.h"
 # define _POSIX_C_SOURCE 200809L
 
-char *socket_path = "\0hidden";
-// TODO: implement
-int serial_binsearch() {
-    return 0;
+int serial_binsearch(int x,int v[],int t) {
+
+int low,high,mid;
+    low=0;
+    high=t-1;
+
+    while(low <= high)
+    {
+        mid = ( low + high ) / 2;
+
+        if( v[mid] < x){
+            low  = mid + 1;
+        }else if ( x == v[mid]){
+            return mid;
+	}else{
+	    high = mid - 1;
+	}
+    }
+ if (low > high){
+ 	return -1;
+	}
 }
 
-// TODO: implement
-int parallel_binsearch() {
-    return 0;
+int parallel_binsearch(int x, int v[], int t, int proc) {
+int chunkSize = t/proc;
+int var;
+int (*arrs)[64] = malloc( sizeof *arrs * proc );
+
+for (int i = 0; i < proc; i++) {
+    int start = i * chunkSize;
+    int end = start + chunkSize - 1;
+    if (i == proc - 1) {
+        end = t - 1;
+    }
+
+    for (int j = start; j <= end; j++) {
+        arrs[i][j-(chunkSize*i)] = v[j];
+    }
+}
+
+for (int i = 0; i < proc; i++) {
+    
+    var = serial_binsearch(x, arrs[i], chunkSize);
+    if (var>=0){
+	return var+(chunkSize*i);
+    }
+}
 }
 
 int main(int argc, char** argv) {
