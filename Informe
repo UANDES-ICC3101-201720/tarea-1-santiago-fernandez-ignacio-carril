@@ -1,0 +1,13 @@
+Tarea 1, Parte 1
+Ignacio Carril
+Santiago Fernández
+
+En esta tarea debemos entender la diferencia y como se procesan los algoritmos en serie y paralelo. En este caso, utilizamos como referencia una busqueda binaria, la cual consiste en buscar un elemento en especifico dentro de una lista ya ordenada por medio de particiones. Ahora un algoritmo serial es aquel que funciona de manera secuencial, es decir, procesa todo un paso a la vez, mientras que un algoritmo en paralelo divide las tareas equitativamente y procesa cada subtarea al mismo tiempo.
+
+La diferencia es claramente en el tiempo que se demorara en realizar la tarea, y en el costo de proceso. El algoritmo paralelo siempre va a demorarse menos dado que al hacer multiples partes de la tarea acorta mucho el tiempo total, pero para ello necesita mas recursos, por lo que puede ser mas pesado.
+
+En este ejemplo, la manera en la que se diferencian las busquedas son con la serial siendo la busqueda binaria común. A la busqueda binaria en paralelo, se divide la lista en n sublistas del mismo tamaño (siendo n la cantidad de procesadores que posee el computador), y se realiza la busqueda serial en esas n sublistas de manera paralela.
+
+Claramente se puede observar que el tiempo de computo es mucho menor en el de paralelo, puesto que el trabajar en listas mas pequeñas y de manera simultanea acorta mucho el trabajo.
+
+Dentro de los problemas que tuvimos fue un mal entendimiento sobre la función de GETOPT en la tarea, y complicaciones al implementar datagen. Si bien las funciones de busqueda hacían lo pedido, no pudimos lograr a tiempo terminar la tarea.
